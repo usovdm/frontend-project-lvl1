@@ -1,8 +1,9 @@
 import promptly from 'promptly'
 
-export const greeting = async () => {
-    const question = 'May I have your name? '
-    const name = await await promptly.prompt(question);
-
-    return `Hello, ${name}!`
+const greeting = async () => {
+  const question = 'May I have your name? '
+  const name = await promptly.prompt(question)
+  console.log(`Hello, ${name}!`)
 }
+
+export default greeting
