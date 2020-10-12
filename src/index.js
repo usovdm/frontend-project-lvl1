@@ -1,21 +1,47 @@
+import promptly from 'promptly'
 import greeting from '../bin/cli.js'
 import brainEven from './games/even.js'
 import brainCalc from './games/calc.js'
 
 const WINS_LIMIT = 3
 
+const playRound = async (getQuestion, parseUserAnswer) => {
+  const { question, correctAnswer } = getQuestion()
+  const answer = await promptly.prompt(question)
+
+  const formattedUserAnswer = parseUserAnswer(answer)
+  console.log(`Your answer: ${formattedUserAnswer}!`)
+
+  const result = formattedUserAnswer === correctAnswer
+
+  if (result) {
+    console.log('Correct!')
+  } else {
+    console.log(
+      `'${formattedUserAnswer}' is wrong answer ;(.`,
+      `Correct answer was '${correctAnswer}'.`,
+    )
+  }
+
+  return result
+}
+
 const playGame = async (userName, game) => {
+  const { instructions, getQuestion, parseUserAnswer } = game
+
   let winsCount = 0
-  console.log(game.instructions)
+  console.log(instructions)
+
   while (winsCount < WINS_LIMIT) {
     // eslint-disable-next-line no-await-in-loop
-    const roundIsWon = await game.playRound()
+    const roundIsWon = await playRound(getQuestion, parseUserAnswer)
     if (!roundIsWon) {
       console.log(`Let's try again, ${userName}!`)
       return
     }
     winsCount += 1
   }
+
   console.log(`Congratulations, ${userName}!`)
 }
 
