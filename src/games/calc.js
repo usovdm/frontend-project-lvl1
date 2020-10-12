@@ -1,5 +1,3 @@
-import promptly from 'promptly'
-
 const PLUS = '+'
 const MINUS = '-'
 const MULTIPLY = '*'
@@ -25,31 +23,23 @@ const calculate = (number1, number2, sign) => {
   return null
 }
 
-const playRound = async () => {
+const getQuestion = () => {
   const number1 = getRandomOf(100)
   const sign = getRandomSign()
   const number2 = sign === MULTIPLY ? getRandomOf(10) : getRandomOf(100)
   const question = `Question: ${number1} ${sign} ${number2} = `
-  const answer = await promptly.prompt(question)
-  console.log(`Your answer: ${answer}!`)
-
-  const answerInt = parseInt(answer, 10)
   const correctAnswer = calculate(number1, number2, sign)
-  const result = answerInt === correctAnswer
 
-  if (result) {
-    console.log('Correct!')
-  } else {
-    console.log(
-      `'${answer}' is wrong answer ;(.`,
-      `Correct answer was '${correctAnswer}'.`,
-    )
+  return {
+    question,
+    correctAnswer,
   }
-
-  return result
 }
+
+const parseUserAnswer = (answer) => parseInt(answer, 10)
 
 export default {
   instructions: 'What is the result of the expression?.',
-  playRound,
+  getQuestion,
+  parseUserAnswer,
 }
