@@ -1,3 +1,5 @@
+import { getRandomOf } from '../utils.js'
+
 const PLUS = '+'
 const MINUS = '-'
 const MULTIPLY = '*'
@@ -7,8 +9,7 @@ const signs = [
   MULTIPLY,
 ]
 
-const getRandomOf = (n = 100) => Math.round(Math.random() * n)
-const getRandomSign = () => signs[Math.floor(Math.random() * signs.length)]
+const getRandomSign = () => signs[getRandomOf(signs.length)]
 
 const calculate = (number1, number2, sign) => {
   if (sign === PLUS) {

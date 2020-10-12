@@ -1,14 +1,14 @@
+import { getRandomOf } from '../utils.js'
+
 const YES = 'yes'
 const NO = 'no'
-
-const getRandomOf100 = () => Math.round(Math.random() * 100)
 
 const isEven = (number) => number % 2 === 0
 
 const boolToAnswer = (bool) => (bool ? YES : NO)
 
 const getQuestion = () => {
-  const number = getRandomOf100()
+  const number = getRandomOf(100)
   const question = `Question: ${number}`
   const correctAnswer = boolToAnswer(isEven(number))
 

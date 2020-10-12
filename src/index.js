@@ -7,8 +7,8 @@ const WINS_LIMIT = 3
 
 const playRound = async (getQuestion, parseUserAnswer) => {
   const { question, correctAnswer } = getQuestion()
-  const answer = await promptly.prompt(question)
 
+  const answer = await promptly.prompt(question)
   const formattedUserAnswer = parseUserAnswer(answer)
   console.log(`Your answer: ${formattedUserAnswer}!`)
 
