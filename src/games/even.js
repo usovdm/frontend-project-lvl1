@@ -1,7 +1,5 @@
 import promptly from 'promptly'
-import greeting from '../../bin/cli.js'
 
-const WINS_LIMIT = 3
 const YES = 'yes'
 const NO = 'no'
 
@@ -33,25 +31,7 @@ const playRound = async () => {
   return result
 }
 
-const playGame = async (userName) => {
-  let winsCount = 0
-  console.log('Answer "yes" if the number is even, otherwise answer "no".')
-  while (winsCount < WINS_LIMIT) {
-    // eslint-disable-next-line no-await-in-loop
-    const roundIsWon = await playRound()
-    if (!roundIsWon) {
-      console.log(`Let's try again, ${userName}!`)
-      return
-    }
-    winsCount += 1
-  }
-  console.log(`Congratulations, ${userName}!`)
+export default {
+  instructions: 'Answer "yes" if the number is even, otherwise answer "no".',
+  playRound,
 }
-
-const main = async () => {
-  console.log('Welcome to the Brain Games!')
-  const userName = await greeting()
-  playGame(userName)
-}
-
-export default main
