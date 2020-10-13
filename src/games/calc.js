@@ -9,7 +9,7 @@ const signs = [
   MULTIPLY,
 ]
 
-const getRandomSign = () => signs[getRandomOf(signs.length)]
+const getRandomSign = () => signs[getRandomOf(signs.length) + 1]
 
 const calculate = (number1, number2, sign) => {
   if (sign === PLUS) {
@@ -28,7 +28,8 @@ const getQuestion = () => {
   const number1 = getRandomOf(100)
   const sign = getRandomSign()
   const number2 = sign === MULTIPLY ? getRandomOf(10) : getRandomOf(100)
-  const question = `Question: ${number1} ${sign} ${number2} = `
+
+  const question = `${number1} ${sign} ${number2} = `
   const correctAnswer = calculate(number1, number2, sign)
 
   return {

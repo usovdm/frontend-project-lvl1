@@ -2,13 +2,14 @@ import promptly from 'promptly'
 import greeting from '../bin/cli.js'
 import brainEven from './games/even.js'
 import brainCalc from './games/calc.js'
+import brainGcd from './games/gcd.js'
 
 const WINS_LIMIT = 3
 
 const playRound = async (getQuestion, parseUserAnswer) => {
   const { question, correctAnswer } = getQuestion()
 
-  const answer = await promptly.prompt(question)
+  const answer = await promptly.prompt(`Question: ${question}`)
   const formattedUserAnswer = parseUserAnswer(answer)
   console.log(`Your answer: ${formattedUserAnswer}!`)
 
@@ -57,6 +58,8 @@ export default (gameName) => {
     game = brainEven
   } else if (gameName === 'calc') {
     game = brainCalc
+  } else if (gameName === 'gcd') {
+    game = brainGcd
   } else {
     throw new Error('Game is not defined')
   }
