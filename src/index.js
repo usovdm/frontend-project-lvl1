@@ -4,6 +4,7 @@ import brainEven from './games/even.js'
 import brainCalc from './games/calc.js'
 import brainGcd from './games/gcd.js'
 import brainProgression from './games/progression.js'
+import brainPrime from './games/prime.js'
 
 const WINS_LIMIT = 3
 
@@ -63,6 +64,8 @@ export default (gameName) => {
     game = brainGcd
   } else if (gameName === 'progression') {
     game = brainProgression
+  } else if (gameName === 'prime') {
+    game = brainPrime
   } else {
     throw new Error('Game is not defined')
   }
