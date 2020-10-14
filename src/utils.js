@@ -1,2 +1,2 @@
 /* eslint-disable import/prefer-default-export */
-export const getRandomOf = (n = 100) => Math.ceil(Math.random() * n)
+export const getRandom = (left, right) => Math.floor(Math.random() * (right - left + 1)) + left

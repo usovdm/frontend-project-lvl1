@@ -1,10 +1,10 @@
-import { getRandomOf } from '../utils.js'
+import { getRandom } from '../utils.js'
 
 const getQuestion = () => {
-  const countOfItems = Math.ceil(Math.random() * 10) + 5
-  const hiddenIndex = getRandomOf(countOfItems) - 1
-  const startNumber = getRandomOf(20)
-  const stepNumber = getRandomOf(10)
+  const countOfItems = getRandom(5, 15)
+  const hiddenIndex = getRandom(0, countOfItems - 1)
+  const startNumber = getRandom(1, 20)
+  const stepNumber = getRandom(1, 10)
 
   const numbers = []
   let correctAnswer

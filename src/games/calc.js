@@ -1,4 +1,4 @@
-import { getRandomOf } from '../utils.js'
+import { getRandom } from '../utils.js'
 
 const PLUS = '+'
 const MINUS = '-'
@@ -9,7 +9,7 @@ const signs = [
   MULTIPLY,
 ]
 
-const getRandomSign = () => signs[getRandomOf(signs.length) + 1]
+const getRandomSign = () => signs[getRandom(0, signs.length - 1)]
 
 const calculate = (number1, number2, sign) => {
   if (sign === PLUS) {
@@ -25,9 +25,9 @@ const calculate = (number1, number2, sign) => {
 }
 
 const getQuestion = () => {
-  const number1 = getRandomOf(100)
+  const number1 = getRandom(1, 100)
   const sign = getRandomSign()
-  const number2 = sign === MULTIPLY ? getRandomOf(10) : getRandomOf(100)
+  const number2 = sign === MULTIPLY ? getRandom(1, 10) : getRandom(1, 100)
 
   const question = `${number1} ${sign} ${number2} = `
   const correctAnswer = calculate(number1, number2, sign)

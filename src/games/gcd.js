@@ -1,4 +1,4 @@
-import { getRandomOf } from '../utils.js'
+import { getRandom } from '../utils.js'
 
 const getGcd = (number1, number2) => {
   let smaller
@@ -23,9 +23,9 @@ const getGcd = (number1, number2) => {
 }
 
 const getQuestion = () => {
-  const divisor = getRandomOf(10)
-  const number1 = divisor * (getRandomOf(25))
-  const number2 = divisor * (getRandomOf(25))
+  const divisor = getRandom(1, 10)
+  const number1 = divisor * getRandom(1, 25)
+  const number2 = divisor * getRandom(1, 25)
 
   const question = `${number1} ${number2}`
   const correctAnswer = getGcd(number1, number2)
