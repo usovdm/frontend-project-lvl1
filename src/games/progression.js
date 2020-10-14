@@ -1,24 +1,32 @@
 import { getRandom } from '../utils.js'
 
-const getQuestion = () => {
+const getProgressionWithHiddenNumber = () => {
   const countOfItems = getRandom(5, 15)
   const hiddenIndex = getRandom(0, countOfItems - 1)
   const startNumber = getRandom(1, 20)
   const stepNumber = getRandom(1, 10)
 
-  const numbers = []
-  let correctAnswer
+  const progressionNumbers = []
+  let hiddenNumber
   for (let i = 0; i <= countOfItems - 1; i += 1) {
     const number = startNumber + stepNumber * i
     if (i === hiddenIndex) {
-      correctAnswer = number
-      numbers.push('..')
+      hiddenNumber = number
+      progressionNumbers.push('..')
     } else {
-      numbers.push(number)
+      progressionNumbers.push(number)
     }
   }
 
-  const question = numbers.join(' ')
+  return {
+    progressionNumbers,
+    hiddenNumber,
+  }
+}
+
+const getQuestion = () => {
+  const { progressionNumbers, hiddenNumber: correctAnswer } = getProgressionWithHiddenNumber()
+  const question = progressionNumbers.join(' ')
 
   return {
     question,
