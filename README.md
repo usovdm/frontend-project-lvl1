@@ -1,5 +1,5 @@
 ### Hexlet tests and linter status:
-![Actions Status](/workflows/hexlet-check/badge.svg)
+[![Actions Status](https://github.com/usovdm/frontend-project-lvl1/workflows/hexlet-check/badge.svg)](https://github.com/usovdm/frontend-project-lvl1/actions?query=workflow%3Ahexlet-check)
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/usovdm/frontend-project-lvl1)
 

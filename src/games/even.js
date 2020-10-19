@@ -1,28 +1,28 @@
-import { getRandom } from '../utils.js'
+import { getRandom } from '../utils.js';
 
-const YES = 'yes'
-const NO = 'no'
+const YES = 'yes';
+const NO = 'no';
 
-const isEven = (number) => number % 2 === 0
+const isEven = (number) => number % 2 === 0;
 
-const boolToAnswer = (bool) => (bool ? YES : NO)
+const boolToAnswer = (bool) => (bool ? YES : NO);
 
 const getQuestion = () => {
-  const number = getRandom(1, 100)
+  const number = getRandom(1, 100);
 
-  const question = number.toString()
-  const correctAnswer = boolToAnswer(isEven(number))
+  const question = number.toString();
+  const correctAnswer = boolToAnswer(isEven(number));
 
   return {
     question,
     correctAnswer,
-  }
-}
+  };
+};
 
-const parseUserAnswer = (answer) => boolToAnswer(answer === YES)
+const parseUserAnswer = (answer) => boolToAnswer(answer === YES);
 
 export default {
   instructions: 'Answer "yes" if the number is even, otherwise answer "no".',
   getQuestion,
   parseUserAnswer,
-}
+};
