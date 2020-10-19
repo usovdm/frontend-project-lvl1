@@ -7,11 +7,9 @@ const getProgressionWithHiddenNumber = () => {
   const stepNumber = getRandom(1, 10)
 
   const progressionNumbers = []
-  let hiddenNumber
   for (let i = 0; i <= countOfItems - 1; i += 1) {
     const number = startNumber + stepNumber * i
     if (i === hiddenIndex) {
-      hiddenNumber = number
       progressionNumbers.push('..')
     } else {
       progressionNumbers.push(number)
@@ -20,7 +18,7 @@ const getProgressionWithHiddenNumber = () => {
 
   return {
     progressionNumbers,
-    hiddenNumber,
+    hiddenNumber: startNumber + stepNumber * hiddenIndex,
   }
 }
 
