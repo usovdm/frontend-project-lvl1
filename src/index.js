@@ -1,5 +1,5 @@
 import promptly from 'promptly'
-import greeting from '../bin/cli.js'
+import greeting from './greeting.js'
 import brainEven from './games/even.js'
 import brainCalc from './games/calc.js'
 import brainGcd from './games/gcd.js'
