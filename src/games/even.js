@@ -10,7 +10,7 @@ const boolToAnswer = (bool) => (bool ? YES : NO)
 const getQuestion = () => {
   const number = getRandom(1, 100)
 
-  const question = `${number}`
+  const question = number.toString()
   const correctAnswer = boolToAnswer(isEven(number))
 
   return {

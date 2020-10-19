@@ -3,7 +3,7 @@ import { getRandom } from '../utils.js'
 const YES = 'yes'
 const NO = 'no'
 
-const isPrimary = (number) => {
+const isPrime = (number) => {
   if (number < 2) {
     return false
   }
@@ -22,8 +22,8 @@ const boolToAnswer = (bool) => (bool ? YES : NO)
 const getQuestion = () => {
   const number = getRandom(1, 100)
 
-  const question = `${number}`
-  const correctAnswer = boolToAnswer(isPrimary(number))
+  const question = number.toString()
+  const correctAnswer = boolToAnswer(isPrime(number))
 
   return {
     question,

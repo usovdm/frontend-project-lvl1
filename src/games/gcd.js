@@ -1,16 +1,8 @@
 import { getRandom } from '../utils.js'
 
 const getGcd = (number1, number2) => {
-  let smaller
-  let greater
-
-  if (number1 > number2) {
-    smaller = number2
-    greater = number1
-  } else {
-    smaller = number1
-    greater = number2
-  }
+  const smaller = Math.min(number1, number2)
+  const greater = Math.max(number1, number2)
 
   for (let i = 1; i <= smaller; i += 1) {
     const divisor = smaller / i
