@@ -23,7 +23,7 @@ const getQuestion = () => {
 const parseUserAnswer = (answer) => boolToAnswer(answer === YES);
 
 export default () => playGame({
-  instructions: 'Answer "yes" if the number is even, otherwise answer "no".',
+  instructions: `Answer "${YES}" if the number is even, otherwise answer "${NO}".`,
   getQuestion,
   parseUserAnswer,
 });

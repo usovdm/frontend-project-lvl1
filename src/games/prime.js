@@ -35,7 +35,7 @@ const getQuestion = () => {
 const parseUserAnswer = (answer) => boolToAnswer(answer === YES);
 
 export default () => playGame({
-  instructions: 'Answer "yes" if given number is prime. Otherwise answer "no".',
+  instructions: `Answer "${YES}" if given number is prime. Otherwise answer "${NO}".`,
   getQuestion,
   parseUserAnswer,
 });
