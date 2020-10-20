@@ -1,4 +1,5 @@
 import { getRandom } from '../utils.js';
+import playGame from '../index.js';
 
 const getGcd = (number1, number2) => {
   const smaller = Math.min(number1, number2);
@@ -30,8 +31,8 @@ const getQuestion = () => {
 
 const parseUserAnswer = (answer) => parseInt(answer, 10);
 
-export default {
+export default () => playGame({
   instructions: 'Find the greatest common divisor of given numbers.',
   getQuestion,
   parseUserAnswer,
-};
+});

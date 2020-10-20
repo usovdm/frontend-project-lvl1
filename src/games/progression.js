@@ -1,4 +1,5 @@
 import { getRandom } from '../utils.js';
+import playGame from '../index.js';
 
 const getRandomProgressionArguments = () => {
   const countOfItems = getRandom(5, 15);
@@ -46,8 +47,8 @@ const getQuestion = () => {
 
 const parseUserAnswer = (answer) => parseInt(answer, 10);
 
-export default {
+export default () => playGame({
   instructions: 'What number is missing in the progression?',
   getQuestion,
   parseUserAnswer,
-};
+});

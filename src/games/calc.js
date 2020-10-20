@@ -1,4 +1,5 @@
 import { getRandom } from '../utils.js';
+import playGame from '../index.js';
 
 const PLUS = '+';
 const MINUS = '-';
@@ -40,8 +41,8 @@ const getQuestion = () => {
 
 const parseUserAnswer = (answer) => parseInt(answer, 10);
 
-export default {
+export default () => playGame({
   instructions: 'What is the result of the expression?.',
   getQuestion,
   parseUserAnswer,
-};
+});

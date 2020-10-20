@@ -1,10 +1,5 @@
 import promptly from 'promptly';
 import greeting from './greeting.js';
-import brainEven from './games/even.js';
-import brainCalc from './games/calc.js';
-import brainGcd from './games/gcd.js';
-import brainProgression from './games/progression.js';
-import brainPrime from './games/prime.js';
 
 const WINS_LIMIT = 3;
 
@@ -48,26 +43,8 @@ const playGame = async (userName, game) => {
   console.log(`Congratulations, ${userName}!`);
 };
 
-const play = async (game) => {
+export default async (game) => {
   console.log('Welcome to the Brain Games!');
   const userName = await greeting();
   playGame(userName, game);
-};
-
-export default (gameName) => {
-  let game;
-  if (gameName === 'even') {
-    game = brainEven;
-  } else if (gameName === 'calc') {
-    game = brainCalc;
-  } else if (gameName === 'gcd') {
-    game = brainGcd;
-  } else if (gameName === 'progression') {
-    game = brainProgression;
-  } else if (gameName === 'prime') {
-    game = brainPrime;
-  } else {
-    throw new Error('Game is not defined');
-  }
-  play(game);
 };

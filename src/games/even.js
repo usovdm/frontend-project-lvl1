@@ -1,4 +1,5 @@
 import { getRandom } from '../utils.js';
+import playGame from '../index.js';
 
 const YES = 'yes';
 const NO = 'no';
@@ -21,8 +22,8 @@ const getQuestion = () => {
 
 const parseUserAnswer = (answer) => boolToAnswer(answer === YES);
 
-export default {
+export default () => playGame({
   instructions: 'Answer "yes" if the number is even, otherwise answer "no".',
   getQuestion,
   parseUserAnswer,
-};
+});
