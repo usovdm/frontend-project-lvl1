@@ -4,40 +4,40 @@ import playGame from '../index.js';
 const getRandomProgressionArguments = () => {
   const countOfItems = getRandom(5, 15);
   const hiddenIndex = getRandom(0, countOfItems - 1);
-  const startNumber = getRandom(1, 20);
-  const stepNumber = getRandom(1, 10);
+  const start = getRandom(1, 20);
+  const step = getRandom(1, 10);
 
   return {
-    startNumber, countOfItems, stepNumber, hiddenIndex,
+    start, countOfItems, step, hiddenIndex,
   };
 };
 
-const getProgressionWithHiddenNumber = (startNumber, countOfItems, stepNumber, hiddenIndex) => {
-  const progressionNumbers = [];
+const getProgressionWithHiddenNumber = (start, countOfItems, step, hiddenIndex) => {
+  const progression = [];
   for (let i = 0; i <= countOfItems - 1; i += 1) {
-    const number = startNumber + stepNumber * i;
+    const number = start + step * i;
     if (i === hiddenIndex) {
-      progressionNumbers.push('..');
+      progression.push('..');
     } else {
-      progressionNumbers.push(number);
+      progression.push(number);
     }
   }
 
   return {
-    progressionNumbers,
-    hiddenNumber: startNumber + stepNumber * hiddenIndex,
+    progression,
+    hiddenNumber: start + step * hiddenIndex,
   };
 };
 
 const getQuestion = () => {
   const {
-    startNumber, countOfItems, stepNumber, hiddenIndex,
+    start, countOfItems, step, hiddenIndex,
   } = getRandomProgressionArguments();
   const {
-    progressionNumbers,
+    progression,
     hiddenNumber: correctAnswer,
-  } = getProgressionWithHiddenNumber(startNumber, countOfItems, stepNumber, hiddenIndex);
-  const question = progressionNumbers.join(' ');
+  } = getProgressionWithHiddenNumber(start, countOfItems, step, hiddenIndex);
+  const question = progression.join(' ');
 
   return {
     question,
