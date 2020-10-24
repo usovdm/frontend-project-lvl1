@@ -23,7 +23,8 @@ const calculate = (number1, number2, sign) => {
   if (sign === signs.multiply) {
     return number1 * number2;
   }
-  return null;
+
+  throw new Error('Unexpected operation has been called');
 };
 
 const getQuestion = () => {

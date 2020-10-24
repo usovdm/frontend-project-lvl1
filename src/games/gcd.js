@@ -12,7 +12,7 @@ const getGcd = (number1, number2) => {
     }
   }
 
-  return NaN;
+  throw new Error('Unexpected arguments has been passed');
 };
 
 const getQuestion = () => {
