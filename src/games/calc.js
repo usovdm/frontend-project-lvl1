@@ -1,25 +1,26 @@
 import { getRandom } from '../utils.js';
 import playGame from '../index.js';
 
-const PLUS = '+';
-const MINUS = '-';
-const MULTIPLY = '*';
-const signs = [
-  PLUS,
-  MINUS,
-  MULTIPLY,
-];
+const signs = {
+  plus: '+',
+  minus: '-',
+  multiply: '*',
+};
 
-const getRandomSign = () => signs[getRandom(0, signs.length - 1)];
+const getRandomSign = () => {
+  const signsKeys = Object.keys(signs);
+  const randomSignKey = signsKeys[getRandom(0, signsKeys.length - 1)];
+  return signs[randomSignKey];
+};
 
 const calculate = (number1, number2, sign) => {
-  if (sign === PLUS) {
+  if (sign === signs.plus) {
     return number1 + number2;
   }
-  if (sign === MINUS) {
+  if (sign === signs.minus) {
     return number1 - number2;
   }
-  if (sign === MULTIPLY) {
+  if (sign === signs.multiply) {
     return number1 * number2;
   }
   return null;
@@ -28,7 +29,7 @@ const calculate = (number1, number2, sign) => {
 const getQuestion = () => {
   const number1 = getRandom(1, 100);
   const sign = getRandomSign();
-  const number2 = sign === MULTIPLY ? getRandom(1, 10) : getRandom(1, 100);
+  const number2 = sign === signs.multiply ? getRandom(1, 10) : getRandom(1, 100);
 
   const question = `${number1} ${sign} ${number2} = `;
   const correctAnswer = calculate(number1, number2, sign);
