@@ -35,20 +35,17 @@ const getQuestion = () => {
   } = getRandomProgressionArguments();
   const {
     progression,
-    hiddenNumber: correctAnswer,
+    hiddenNumber,
   } = getProgressionWithHiddenNumber(start, countOfItems, step, hiddenIndex);
   const question = progression.join(' ');
 
   return {
     question,
-    correctAnswer,
+    correctAnswer: hiddenNumber.toString(),
   };
 };
-
-const parseUserAnswer = (answer) => parseInt(answer, 10);
 
 export default () => playGame({
   instructions: 'What number is missing in the progression?',
   getQuestion,
-  parseUserAnswer,
 });

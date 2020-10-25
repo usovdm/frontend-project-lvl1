@@ -3,20 +3,17 @@ import greeting from './greeting.js';
 
 const WINS_LIMIT = 3;
 
-const playRound = async (getQuestion, parseUserAnswer) => {
-  const { question, correctAnswer } = getQuestion();
-
+const playRound = async ({ question, correctAnswer }) => {
   const answer = await promptly.prompt(`Question: ${question}`);
-  const formattedUserAnswer = parseUserAnswer(answer);
-  console.log(`Your answer: ${formattedUserAnswer}!`);
+  console.log(`Your answer: ${answer}!`);
 
-  const result = formattedUserAnswer === correctAnswer;
+  const result = answer === correctAnswer;
 
   if (result) {
     console.log('Correct!');
   } else {
     console.log(
-      `'${formattedUserAnswer}' is wrong answer ;(.`,
+      `'${answer}' is wrong answer ;(.`,
       `Correct answer was '${correctAnswer}'.`,
     );
   }
@@ -25,14 +22,14 @@ const playRound = async (getQuestion, parseUserAnswer) => {
 };
 
 const playGame = async (userName, game) => {
-  const { instructions, getQuestion, parseUserAnswer } = game;
+  const { instructions, getQuestion } = game;
 
   let winsCount = 0;
   console.log(instructions);
 
   while (winsCount < WINS_LIMIT) {
     // eslint-disable-next-line no-await-in-loop
-    const roundIsWon = await playRound(getQuestion, parseUserAnswer);
+    const roundIsWon = await playRound(getQuestion());
     if (!roundIsWon) {
       console.log(`Let's try again, ${userName}!`);
       return;

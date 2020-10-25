@@ -21,7 +21,7 @@ const getQuestion = () => {
   const number2 = divisor * getRandom(1, 25);
 
   const question = `${number1} ${number2}`;
-  const correctAnswer = getGcd(number1, number2);
+  const correctAnswer = getGcd(number1, number2).toString();
 
   return {
     question,
@@ -29,10 +29,7 @@ const getQuestion = () => {
   };
 };
 
-const parseUserAnswer = (answer) => parseInt(answer, 10);
-
 export default () => playGame({
   instructions: 'Find the greatest common divisor of given numbers.',
   getQuestion,
-  parseUserAnswer,
 });

@@ -33,7 +33,7 @@ const getQuestion = () => {
   const number2 = sign === signs.multiply ? getRandom(1, 10) : getRandom(1, 100);
 
   const question = `${number1} ${sign} ${number2} = `;
-  const correctAnswer = calculate(number1, number2, sign);
+  const correctAnswer = calculate(number1, number2, sign).toString();
 
   return {
     question,
@@ -41,10 +41,7 @@ const getQuestion = () => {
   };
 };
 
-const parseUserAnswer = (answer) => parseInt(answer, 10);
-
 export default () => playGame({
   instructions: 'What is the result of the expression?.',
   getQuestion,
-  parseUserAnswer,
 });

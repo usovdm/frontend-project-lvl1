@@ -1,8 +1,10 @@
 import { getRandom } from '../utils.js';
 import playGame from '../index.js';
 
-const YES = 'yes';
-const NO = 'no';
+const answerVariants = {
+  yes: 'yes',
+  no: 'no',
+};
 
 const isPrime = (number) => {
   if (number < 2) {
@@ -18,7 +20,7 @@ const isPrime = (number) => {
   return true;
 };
 
-const boolToAnswer = (bool) => (bool ? YES : NO);
+const boolToAnswer = (bool) => (bool ? answerVariants.yes : answerVariants.no);
 
 const getQuestion = () => {
   const number = getRandom(1, 100);
@@ -32,10 +34,7 @@ const getQuestion = () => {
   };
 };
 
-const parseUserAnswer = (answer) => boolToAnswer(answer === YES);
-
 export default () => playGame({
-  instructions: `Answer "${YES}" if given number is prime. Otherwise answer "${NO}".`,
+  instructions: `Answer "${answerVariants.yes}" if given number is prime. Otherwise answer "${answerVariants.no}".`,
   getQuestion,
-  parseUserAnswer,
 });
