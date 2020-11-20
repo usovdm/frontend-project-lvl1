@@ -7,10 +7,10 @@ const signs = {
   multiply: '*',
 };
 
-const getRandomSign = () => {
-  const signsKeys = Object.keys(signs);
-  const randomSignKey = signsKeys[getRandom(0, signsKeys.length - 1)];
-  return signs[randomSignKey];
+const getRandomValue = (object) => {
+  const keys = Object.keys(object);
+  const randomKey = keys[getRandom(0, keys.length - 1)];
+  return object[randomKey];
 };
 
 const calculate = (number1, number2, sign) => {
@@ -29,7 +29,7 @@ const calculate = (number1, number2, sign) => {
 
 const getQuestion = () => {
   const number1 = getRandom(1, 100);
-  const sign = getRandomSign();
+  const sign = getRandomValue(signs);
   const number2 = sign === signs.multiply ? getRandom(1, 10) : getRandom(1, 100);
 
   const question = `${number1} ${sign} ${number2} = `;

@@ -1,9 +1,15 @@
 import promptly from 'promptly';
-import greeting from './greeting.js';
 
 const WINS_LIMIT = 3;
 
-const playRound = async ({ question, correctAnswer }) => {
+const greeting = async () => {
+  const question = 'May I have your name? ';
+  const name = await promptly.prompt(question);
+  console.log(`Hello, ${name}!`);
+  return name;
+};
+
+const playRound = async (question, correctAnswer) => {
   const answer = await promptly.prompt(`Question: ${question}`);
   console.log(`Your answer: ${answer}!`);
 
@@ -28,8 +34,9 @@ const playGame = async (userName, game) => {
   console.log(instructions);
 
   while (winsCount < WINS_LIMIT) {
+    const { question, correctAnswer } = getQuestion();
     // eslint-disable-next-line no-await-in-loop
-    const roundIsWon = await playRound(getQuestion());
+    const roundIsWon = await playRound(question, correctAnswer);
     if (!roundIsWon) {
       console.log(`Let's try again, ${userName}!`);
       return;
